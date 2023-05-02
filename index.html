@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>finaltask2</title>
+</head>
+
+<body>
+
+    <div style="margin-left: 35%; position: relative; top: 300px;">
+        <div style="border: 1px solid; display: inline-block; padding: 20px; background-color: bisque;">
+            basketball products: <input type="text" id="numItems" value="0" >
+            <button id="plusBtn">+</button>
+            <button id="minusBtn">-</button>
+            <br>
+            shipping and handling fee: <input type="text" id="shipping" >
+        </div>
+        <br>
+        <h1>order summary</h1>
+        <br>
+
+        shipping and handling: $4.99
+
+        <br>
+        total before tax: <p style="display: inline-block;" id="notax"></p>
+        <br>
+        extimated tax(10%): <p style="display: inline-block;" id="tax"></p>
+
+        <br>
+
+        <h1 style="color: red; display: inline-block;">order total:</h1>  <h1 style="display: inline-block;" id="total"></h1>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+
+
+
+
+
+
+
+    <script>
+        
+        const shipping = 4.99;
+        let quantity=1;
+        
+        document.getElementById("shipping").value = parseFloat(shipping);
+
+
+        const plusBtn = document.getElementById("plusBtn");
+const numItemsInput = document.getElementById("numItems");
+const minusBtn = document.getElementById("minusBtn");
+
+function updateNumItems(increment) {
+  let numItems = parseInt(numItemsInput.value);
+  numItems += increment;
+  if (numItems < 0) {
+    numItems = 0;
+  }
+  numItemsInput.value = numItems;
+
+ 
+  const price = 15.97;
+  const quantity = parseFloat(numItemsInput.value);
+  const subtotal = quantity * parseFloat(price);
+  const shipping = parseFloat(document.getElementById("shipping").value);
+  const notax = subtotal + shipping;
+  const taxrate = 0.1;
+  const withtax = subtotal * taxrate;
+  const total = notax + withtax;
+  const tax = taxrate * notax  ;
+
+  document.getElementById("notax").innerHTML = notax.toFixed(2);
+  document.getElementById("total").innerHTML = total.toFixed(2);
+  document.getElementById("tax").innerHTML = tax.toFixed(2);
+}
+
+plusBtn.addEventListener("click", () => updateNumItems(1));
+minusBtn.addEventListener("click", () => updateNumItems(-1));
+
+        
+      
+
+
+   </script>
+
+       
+
+
+ 
+  
+    
+
+</body>
+</html>
+
+
